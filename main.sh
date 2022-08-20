@@ -21,4 +21,4 @@ function mvdir() {
 # svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
 git_sparse_clone master 'https://github.com/vernesong/OpenClash.git' 'tmp' 'luci-app-openclash'
 
-git_clone https://github.com/rufengsuixing/luci-app-adguardhome && mvdir luci-app-adguardhome
+git_clone https://github.com/rufengsuixing/luci-app-adguardhome && rm -rf luci-app-adguardhome/.git
