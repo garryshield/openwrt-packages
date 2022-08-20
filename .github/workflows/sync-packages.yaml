@@ -21,7 +21,7 @@ jobs:
       - name: Sync
         run: |
           chmod +x main.sh
-          main.sh
+          ./main.sh
 
       - name: Push
         run: |
