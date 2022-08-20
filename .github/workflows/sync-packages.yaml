@@ -21,6 +21,9 @@ jobs:
       - name: Sync
         run: |
           chmod +x main.sh
+
+          git rm -r --cache * >/dev/null 2>&1 &
+          rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
           ./main.sh
 
       - name: Push
