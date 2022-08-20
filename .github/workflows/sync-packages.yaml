@@ -26,9 +26,11 @@ jobs:
       - name: Push
         run: |
           Emoji=("🎉" "🤞" "✨" "🎁" "🎈" "🎄" "🎨" "💋" "🍓" "🍕" "🍉" "💐" "🌴" "🚀" "🛸" "🗽" "⛅" "🌈" "🔥" "⛄" "🐶" "🏅" "🦄" "🐤")
-          git add .
-          git commit --quiet -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
-          git push --quiet
+          git add -A
+          if ! git diff-index --quiet HEAD; then
+            git commit --quiet -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
+            git push --quiet
+          fi
 
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@main
