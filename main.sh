@@ -17,8 +17,13 @@ function mvdir() {
   mv -n $(find $1/* -maxdepth 0 -type d) ./
   rm -rf $1
 }
+function clrdir() {
+  rm -rf $(find $1/ -name ".*")
+}
 
-# svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
-git_sparse_clone master 'https://github.com/vernesong/OpenClash.git' 'tmp' 'luci-app-openclash'
+git rm -r --cache * >/dev/null 2>&1 &
+rm -rf $(find ./* -maxdepth 0 -type d ! -name "diy") >/dev/null 2>&1
 
-git_clone https://github.com/rufengsuixing/luci-app-adguardhome && rm -rf luci-app-adguardhome/.git
+svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
+
+git_clone https://github.com/rufengsuixing/luci-app-adguardhome && clrdir luci-app-adguardhome
