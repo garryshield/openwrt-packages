@@ -1,2 +1,1 @@
 # openwrt-packages
-sd
