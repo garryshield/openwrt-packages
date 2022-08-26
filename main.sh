@@ -21,7 +21,7 @@ function clrdir() {
   rm -rf $(find $1/ -name ".*")
 }
 
-git rm -r --cache * >/dev/null 2>&1 &
+git rm -r --cache * >/dev/null 2>&1
 rm -rf $(find ./* -maxdepth 0 -type d ! -name "diy") >/dev/null 2>&1
 
 svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
